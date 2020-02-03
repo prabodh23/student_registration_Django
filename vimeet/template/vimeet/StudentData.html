@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Information</title>
+
+   <link rel="stylesheet" type="text/css" href="{%static 'response_style.css' %} " >
+</head>
+
+  <body>
+    <div class="topnav">
+        <a href="{%url 'home_page' %}" >Home</a>
+        <a href="{%url 'empData' %}" >Registered Students Details </a>
+			<a  href="{%url 'EmpReg' %}" >Students Registration </a>
+        <a class="active" href="{%url 'saveStudData' %}">Student who Contact us</a>
+        <a  name="user"> Log In : {{request.user.username }} </a>
+        <a href="{%url 'logout' %}"><font color="red">Log out</font></a>
+    </div>
+
+    <br>
+    <table align="center"bgcolor="grey"><center> <h1>Student who Contact Us </h1></center><br>
+    <tr>
+      <th>Serial Number</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Country</th>
+      <th> Subject</th>
+    </tr>
+    {% for stored_studentData in Stud_savedData %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+     <td>{{ stored_studentData.stud_name}}</td>
+      <td>{{ stored_studentData.stud_last}} </td>
+      <td>{{ stored_studentData.stud_contry}}</td>
+      <td>{{ stored_studentData.stud_subject}}</td>
+    </tr>
+    {% endfor %}
+
+    </table>
+
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Information</title>
+
+   <link rel="stylesheet" type="text/css" href="{%static 'response_style.css' %} " >
+</head>
+
+  <body>
+    <div class="topnav">
+        <a href="{%url 'home_page' %}" >Home</a>
+        <a class="active" href="{%url 'empData' %}" >Registered Students Details </a>
+			<a  href="{%url 'EmpReg' %}" >Students Registration </a>
+        <a  href="{%url 'studData' %}">Student who Contact us</a>
+        <a  name="user"> Log In : {{request.user.username }} </a>
+        <a href="{%url 'logout' %}"><font color="red">Log out</font></a>
+    </div>
+    
+    <br>
+    <table align="center" bgcolor="grey"><center> <h1>Student  Details</h1></center><br>
+    <tr>
+      <th>Sr. No.</th>
+      <th>Student Name</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+      <th>Department</th>
+    </tr>
+    {% for stored_empData in Emp_savedData %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+     <td>{{ stored_empData.Emp_name}}</td>
+      <td>{{ stored_empData.Emp_email}} </td>
+      <td>{{ stored_empData.Emp_phonNO}}</td> 
+      <td>{{ stored_empData.Emp_dept}}</td> 
+    </tr>
+    {% endfor %}
+  
+    </table>
+
+  </body>
+</html>

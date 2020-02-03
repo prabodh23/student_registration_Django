@@ -1,0 +1,23 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact us</title>
+    <link rel="stylesheet" href="{% static 'home_page_style.css' %}">
+</head>
+<body>
+
+
+    <div class="topnav">
+  <a class="active" href="{%url 'home_page' %}" >Home</a>
+        <a  href="{%url 'contact_us' %}">Contact Us</a>
+        <a  name="user"> Log In : {{request.user.username }} </a>
+        <a href="{%url 'logout' %}"><font color="red">Log out</font></a>
+
+</div>
+
+
+</body>
+</html>
